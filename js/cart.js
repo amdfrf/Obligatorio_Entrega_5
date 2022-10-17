@@ -1,5 +1,7 @@
 let cart;
 let cart_info;
+let count;
+let subtotal;
 
 function show_user_cart(){
 
@@ -41,7 +43,7 @@ function show_user_cart(){
                     <td>${cart.name} </td>
                     <td>${cart.currency}${cart.unitCost}</td>
                     <td><input class="form-control mx-auto w-25" id="count" type="number"></td>
-                    <td><strong>${cart.currency + cart.count * cart.unitCost}<strong></td>
+                    <td><strong id="subtotal">${cart.currency + cart.count * cart.unitCost}<strong></td>
                 </tr>
         </tbody>
         </table>
@@ -50,16 +52,17 @@ function show_user_cart(){
             `
             document.getElementById('cart').innerHTML = htmlContentToAppend;
             document.getElementById('count').value = cart.count;
+            count = document.getElementById("count");
 }
 
 function delivery_info(){
 
     let htmlContentToAppend = "";
     htmlContentToAppend += `<hr>
-    <div class="container text-center">
+    <div class="container">
         <div class="row">
           <div class="col">
-          <h4>Tipo de Envio </h4>
+                <h4>Tipo de Envio </h4>
           </div>
           <div class="col">
           </div>
@@ -68,17 +71,16 @@ function delivery_info(){
         </div>
         <div class="row">
           <div class="col">
-          <input type="radio">Premium 2 a 5 días (15%)
+                <input type="radio">Premium 2 a 5 días (15%)
           </div>
-          <div class="row">
-          <input type="radio">Express 5 a 8 días (7%)
+          <div class="col">
           </div>
-          <div class="row">
-          <input type="radio">Standard 12 a 15 días (5%)
+          <div class="col">
           </div>
+        </div>
         <div class="row">
             <div class="col">
-            <h4>Dirección de envio </h4>
+                <input type="radio">Express 5 a 8 días (7%)
             </div>
             <div class="col">
             </div>
@@ -87,14 +89,28 @@ function delivery_info(){
         </div>
         <div class="row">
             <div class="col">
-            Calle
-            <input class="form-control">
+                <input type="radio">Standard 12 a 15 días (5%)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h4>Dirección de envio </h4> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                    Calle
+                    <input class="form-control">
             </div>
             <div class="col">
-            <input class="form-control">
+                    Número
+                    <input class="form-control">
             </div>
-            <div class="row">
-            <input class="form-control">
+        </div>
+        <div class="row>
+            <div class="col">
+                Esquina
+                <input class="form-control">
             </div>
         </div>
     </div>
@@ -102,6 +118,14 @@ function delivery_info(){
     document.getElementById("delivery_info").innerHTML = htmlContentToAppend;
 }
 
+function user_input_count(){
+    console.log(count);
+    count.addEventListener("input", function(e){
+
+        document.getElementById("subtotal").innerHTML = (cart.currency + (count.value * cart.unitCost))
+
+    })
+}
 
 document.addEventListener("DOMContentLoaded", function(){
         getJSONData(CART_INFO_URL +'25801'+EXT_TYPE ).then(function(resultObj){
@@ -113,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function(){
             deployable();
             show_user_cart();
             delivery_info();
+            user_input_count();
             
         })
 
