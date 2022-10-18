@@ -18,10 +18,10 @@ function show_user_cart(){
           </div>
         </div>
         <div class="row">
-          <div class="col">
+          <div class="col text-start">
           <h4> Articulos a Comprar </h4>
           </div>
-          <div class="col-5">
+          <div class="col-6">
           </div>
           <div class="col">
           </div>
@@ -39,7 +39,9 @@ function show_user_cart(){
         </thead>
         <tbody>
                 <tr>
-                    <th scope="row">Imagen</th>
+                    <th scope="row" class="w-25">
+                        <img class="img-thumbnail w-25 border-0" src="img/prod${cart.id}_1.jpg">
+                    </th>
                     <td>${cart.name} </td>
                     <td>${cart.currency}${cart.unitCost}</td>
                     <td><input class="form-control mx-auto w-25" id="count" type="number"></td>
@@ -47,6 +49,7 @@ function show_user_cart(){
                 </tr>
         </tbody>
         </table>
+        <hr>
     </div>
         
             `
@@ -58,10 +61,10 @@ function show_user_cart(){
 function delivery_info(){
 
     let htmlContentToAppend = "";
-    htmlContentToAppend += `<hr>
+    htmlContentToAppend += `
     <div class="container">
         <div class="row">
-          <div class="col">
+          <div class="col text-start">
                 <h4>Tipo de Envio </h4>
           </div>
           <div class="col">
@@ -70,7 +73,7 @@ function delivery_info(){
           </div>
         </div>
         <div class="row">
-          <div class="col">
+          <div class="col mt-2">
                 <input type="radio">Premium 2 a 5 días (15%)
           </div>
           <div class="col">
@@ -93,24 +96,26 @@ function delivery_info(){
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col mt-3">
                 <h4>Dirección de envio </h4> 
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-3">
             <div class="col">
                     Calle
                     <input class="form-control">
             </div>
             <div class="col">
                     Número
-                    <input class="form-control">
+                    <input class="form-control w-50">
             </div>
         </div>
-        <div class="row>
-            <div class="col">
+        <div class="row">
+            <div class="col mt-3">
                 Esquina
                 <input class="form-control">
+            </div>
+            <div class="col">
             </div>
         </div>
     </div>
