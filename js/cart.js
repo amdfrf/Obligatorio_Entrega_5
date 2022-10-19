@@ -44,8 +44,8 @@ function show_user_cart(){
                     </th>
                     <td>${cart.name} </td>
                     <td>${cart.currency}${cart.unitCost}</td>
-                    <td><input class="form-control mx-auto w-25" id="count" type="number"></td>
-                    <td><strong id="subtotal">${cart.currency + cart.count * cart.unitCost}<strong></td>
+                    <td class="col-3"><input class="form-control mx-auto w-25" id="count" type="number"></td>
+                    <td class="col-3"><strong id="subtotal">${cart.currency + cart.count * cart.unitCost}<strong></td>
                 </tr>
         </tbody>
         </table>
