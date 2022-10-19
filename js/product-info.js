@@ -180,14 +180,14 @@ function showRelatedProducts(){
 function redirect_toProd(id){
     document.getElementById("comments").innerHTML = "";
     document.getElementById("comment-post").innerHTML = "";
-    document.getElementById("comments").innerHTML = "<h3> Comentarios </h3>";
+    document.getElementById("comments").innerHTML = "<h3> Comentarios </h3><hr>";
 
-         getJSONData('https://japceibal.github.io/emercado-api/products/'+id+'.json').then(function(resultObj){
+         getJSONData(PRODUCT_INFO_URL+id+EXT_TYPE).then(function(resultObj){
             if (resultObj.status === "ok"){
                 product = resultObj.data
                 
                 
-                getJSONData('https://japceibal.github.io/emercado-api/products_comments/'+id+'.json').then(function(resultObj){
+                getJSONData(PRODUCT_INFO_COMMENTS_URL+id+EXT_TYPE).then(function(resultObj){
                     if(resultObj.status === "ok"){
                         comments = resultObj.data
                         showProductInfo();
@@ -206,12 +206,12 @@ function redirect_toProd(id){
 
 
 document.addEventListener("DOMContentLoaded",function(){
-    getJSONData('https://japceibal.github.io/emercado-api/products/'+prodID+'.json').then(function(resultObj){
+    getJSONData(PRODUCT_INFO_URL+prodID+EXT_TYPE).then(function(resultObj){
         if (resultObj.status === "ok"){
             product = resultObj.data
             
             
-            getJSONData('https://japceibal.github.io/emercado-api/products_comments/'+prodID+'.json').then(function(resultObj){
+            getJSONData(PRODUCT_INFO_COMMENTS_URL+prodID+EXT_TYPE).then(function(resultObj){
                 if(resultObj.status === "ok"){
                     deployable();
                     comments = resultObj.data
